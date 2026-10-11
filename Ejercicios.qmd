@@ -1,0 +1,12 @@
+---
+title: "Ejercicios"
+author: "Julian Diemer"
+format:
+  html: default
+  typst: default
+---
+
+```{r}
+source("teoriadecision_funciones_incertidumbre.R")
+ls()
+```
