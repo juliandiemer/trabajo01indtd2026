@@ -1,6 +1,5 @@
 ---
 title: "Ejercicios"
-author: "Julian Diemer"
 format:
   html: default
   typst: default
@@ -10,45 +9,6 @@ format:
 
 Se tienen dos matrices de $4 \times 4$ con valores enteros aleatorios: una representa beneficios (favorable) y la otra costos (desfavorable).
 
-::: {.columns}
-
-::: {.column width="50%"}
-
-```{r}
-#| echo: false
-set.seed(42)
-pos = sample(1:10, 13, replace = TRUE)
-neg = sample(-10:-1, 3, replace = TRUE)
-vals = sample(c(pos, neg))
-X = matrix(vals, nrow = 4, ncol = 4)
-colnames(X) = paste0("e", 1:4)
-rownames(X) = paste0("d", 1:4)
-X
-cat("\n(favorable)\n")
-```
-
-:::
-
-::: {.column width="50%"}
-
-```{r}
-#| echo: false
-set.seed(123)
-pos2 = sample(1:10, 13, replace = TRUE)
-neg2 = sample(-10:-1, 3, replace = TRUE)
-vals2 = sample(c(pos2, neg2))
-Y = matrix(vals2, nrow = 4, ncol = 4)
-colnames(Y) = paste0("e", 1:4)
-rownames(Y) = paste0("d", 1:4)
-Y
-cat("\n(defavorable)\n")
-```
-
-:::
-
-:::
-
----
 
 # Problema 2: Decisión de Inversión bajo Incertidumbre
 
@@ -65,5 +25,3 @@ El rendimiento económico final depende del estado de la naturaleza que se prese
 - $e_1$: Energía Solar sube un $15\%$, Electromovilidad sube un $10\%$, Ciberseguridad baja un $5\%$
 - $e_2$: Energía Solar baja un $8\%$, Electromovilidad sube un $12\%$, Ciberseguridad sube un $6\%$
 - $e_3$: Energía Solar baja un $10\%$, Electromovilidad baja un $4\%$, Ciberseguridad sube un $18\%$
-
----
