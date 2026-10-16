@@ -1,5 +1,5 @@
 ---
-title: "Soluciones"
+title: "Soluciónes"
 author: "Julian Diemer"
 format:
   html: default
@@ -7,14 +7,92 @@ format:
 ---
 
 ```{r}
-1 + 1
+source("teoriadecision_funciones_incertidumbre.R")
 ```
 
-You can add options to executable code like this
+# Problema 1: Matrices de valores numéricos
+
+Se tienen dos matrices de $4 \times 4$ con valores enteros aleatorios: una representa beneficios (favorable) y la otra costos (desfavorable).
 
 ```{r}
 #| echo: false
-2 * 2
+#| layout-ncol: 2
+#| tbl-cap: ["(favorable)", "(defavorable)"]
+
+set.seed(42)
+X <- matrix(sample(-10:10, 16, replace = TRUE), nrow = 4, ncol = 4)
+colnames(X) <- paste0("e", 1:4)
+rownames(X) <- paste0("d", 1:4)
+
+Y <- matrix(sample(-10:10, 16, replace = TRUE), nrow = 4, ncol = 4)
+colnames(Y) <- paste0("e", 1:4)
+rownames(Y) <- paste0("d", 1:4)
+
+knitr::kable(X)
+knitr::kable(Y)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+[**Solución (favorable)**]{.underline}**:** Empezamos con el análisis de la primera matriz (favorable), aplicando de manera sistemática los seis criterios de decisión estudiados en clase para evaluar las diferentes alternativas y determinar la decisión óptima bajo cada uno de ellos:
+
+```{r}
+tb01a = crea.tablaX(c(6,-7,-4,9,
+                      -6,7,-7,7,
+                      -10,6,-6,4,
+                      -1,4,3,-8), numalternativas = 4, numestados = 4)
+tb01a
+```
+
+```{r}
+criterio.Wald(tb01a,T)
+```
+
+Aplicando el criterio de Wald (pesimista), podemos observar que las alternativas $d_1$ y $d_2$ resultan ser equivalentes, ya que ambas ofrecen el mismo valor en el peor de los escenarios.
+
+```{r}
+criterio.Optimista(tb01a, T)
+```
+
+Aplicando el criterio optimista (Maximax), se selecciona la alternativa $d_1$, ya que es la que ofrece el mayor beneficio posible en el mejor escenario.
+
+```{r}
+criterio.Savage(tb01a,T)
+```
+
+Según el criterio de Savage (minimax del arrepentimiento), la opción recomendada es $d_2$, ya que es la alternativa que minimiza el máximo coste de oportunidad o pérdida en el peor de los escenarios.
+
+```{r}
+criterio.Laplace(tb01a,T)
+```
+
+Según el criterio de Laplace (equiprobable), se selecciona la alternativa $d_1$, ya que presenta el mayor valor medio o esperanza matemática bajo la suposición de que todos los estados de la naturaleza tienen la misma probabilidad de ocurrir.
+
+```{r}
+criterio.PuntoIdeal(tb01a,T)
+```
+
+Según el método del punto ideal, el resultado también señala la opción $d_1$, aunque el margen fue muy ajustado y por poco resulta elegida la opción $d_2$.
+
+Para el criterio de Hurwicz, elegimos un coeficiente de optimismo de $α = 0,6$, que representa un buen término medio entre el mejor y el peor escenario.
+
+```{r}
+criterio.Hurwicz(tb01a, alfa=0.6, T)
+dibuja.criterio.Hurwicz(tb01a, T)
+```
+
+Ahora vamos a ver la evaluación final:
+
+```{r}
+criterio.Todos(tb01a, 0.6, T)
+```
+
+Vemos que la alternativa $d_1$ se propone cinco veces y la alternativa $d_2$, dos veces. Ningún criterio apoya las alternativas $d_3$ y $d_4$. Por lo tanto, la elección definitiva sería la alternativa $d_1$.
+
+[**Solución (desfavorable)**]{.underline}**:** Continuamos con la solución de la segunda tabla, aplicando los seis mismos criterios:
+
+```{r}
+tb01b = crea.tablaX(c(-2,-6,-8,4,
+                      -7,9,-10,-3,
+                      -6,-9,-1,-7,
+                      2,-3,0,-7), numalternativas = 4, numestados = 4)
+tb01b
+```

@@ -1,5 +1,6 @@
 ---
 title: "Ejercicios"
+author: "Julian Diemer"
 format:
   html: default
   typst: default
@@ -9,6 +10,23 @@ format:
 
 Se tienen dos matrices de $4 \times 4$ con valores enteros aleatorios: una representa beneficios (favorable) y la otra costos (desfavorable).
 
+```{r}
+#| echo: false
+#| layout-ncol: 2
+#| tbl-cap: ["(favorable)", "(defavorable)"]
+
+set.seed(42)
+X <- matrix(sample(-10:10, 16, replace = TRUE), nrow = 4, ncol = 4)
+colnames(X) <- paste0("e", 1:4)
+rownames(X) <- paste0("d", 1:4)
+
+Y <- matrix(sample(-10:10, 16, replace = TRUE), nrow = 4, ncol = 4)
+colnames(Y) <- paste0("e", 1:4)
+rownames(Y) <- paste0("d", 1:4)
+
+knitr::kable(X)
+knitr::kable(Y)
+```
 
 # Problema 2: Decisión de Inversión bajo Incertidumbre
 
