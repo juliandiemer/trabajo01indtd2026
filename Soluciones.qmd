@@ -7,6 +7,7 @@ format:
 ---
 
 ```{r}
+#| echo: false
 source("teoriadecision_funciones_incertidumbre.R")
 ```
 
@@ -165,3 +166,102 @@ A modo de resumen, tenemos lo siguiente:
 - 4\) En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa $d_3$. **(V)**
 
 - 5\) En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa $d_3$ para todos los $\alpha\in(0,1)$. **(F)**
+
+# Problema 2: Decisión de inversión bajo incertidumbre
+
+Un fondo de inversión dispone de $10\,\text{M€}$. Por política de gestión del riesgo, la directiva no puede invertir en los tres sectores a la vez ni concentrar todo en uno solo: debe repartir el capital al $50\%$ entre exactamente dos sectores.
+
+Las tres alternativas posibles son:
+
+- $d_1$: $50\%$ Energía Solar y $50\%$ Electromovilidad
+- $d_2$: $50\%$ Energía Solar y $50\%$ Ciberseguridad
+- $d_3$: $50\%$ Electromovilidad y $50\%$ Ciberseguridad
+
+El rendimiento económico final depende del estado de la naturaleza que se presente el próximo año.
+
+- $e_1$: Energía Solar sube un $15\%$, Electromovilidad sube un $10\%$, Ciberseguridad baja un $5\%$
+- $e_2$: Energía Solar baja un $8\%$, Electromovilidad sube un $12\%$, Ciberseguridad sube un $6\%$
+- $e_3$: Energía Solar baja un $10\%$, Electromovilidad baja un $4\%$, Ciberseguridad sube un $18\%$
+
+Las cinco preguntas de Verdadero o Falso son los siguientes:
+
+1.  Si el CEO se muestra optimista y prevé que las cotizaciones suban, invierte en energía solar y electromovilidad.
+
+2.  Si el CEO se muestra pesimista y prevé que las cotizaciones bajen, invierte en energía solar y ciberseguridad.
+
+3.  Según el criterio de Laplace, la decisión final es invertir en energía solar y ciberseguridad.
+
+4.  El criterio de Hurwicz nunca elige la alternativa $d_2$ para ningún valor de $\alpha\in(0,1)$.
+
+5.  La decisión final es invertir en energía solar y ciberseguridad.
+
+**Solución problema 2**: El planteamiento es el siguiente:
+
+- Decisor: El fondo
+
+- Modelo de beneficios (favorable)
+
+- Estados de la naturaleza:
+
+  - $e_1$: Energía Solar sube un $15\%$, Electromovilidad sube un $10\%$, Ciberseguridad baja un $5\%$
+  - $e_2$: Energía Solar baja un $8\%$, Electromovilidad sube un $12\%$, Ciberseguridad sube un $6\%$
+  - $e_3$: Energía Solar baja un $10\%$, Electromovilidad baja un $4\%$, Ciberseguridad sube un $18\%$
+
+- Alternativas:
+
+  - $d_1$: $50\%$ Energía Solar y $50\%$ Electromovilidad
+  - $d_2$: $50\%$ Energía Solar y $50\%$ Ciberseguridad
+  - $d_3$: $50\%$ Electromovilidad y $50\%$ Ciberseguridad
+
+- Matriz de valoración (beneficios):
+
+  - Estado $e_1$:
+
+    ```{r}
+    (m11 = (0.5*0.15 + 0.5*0.10 + 0*(-0.05)))
+    (m21 = (0.5*0.15 + 0*0.10 + 0.5*(-0.05)))
+    (m31 = (0*0.15 + 0.5*0.10 + 0.5*(-0.05)))
+    ```
+
+  - Estado $e_2$:
+
+    ```{r}
+    (m12 = (0.5*(-0.08) + 0.5*0.12 + 0*0.06))
+    (m22 = (0.5*(-0.08) + 0*0.12 + 0.5*0.06))
+    (m32 = (0*(-0.08) + 0.5*0.12 + 0.5*0.06))
+    ```
+
+  - Estado $e_3$:
+
+    ```{r}
+    (m13 = (0.5*(-0.1) + 0.5*(-0.04) + 0*0.18))
+    (m23 = (0.5*(-0.1) + 0* (-0.04) + 0.5*0.18))
+    (m33 = (0*(-0.1) + 0.5*(-0.04) + 0.5*0.18))
+    ```
+
+- Introducción de datos:
+
+  ```{r}
+  tb02 = crea.tablaX(c(m11,m12,m13,
+                      m21,m22,m23,
+                      m31,m32,m33), numalternativas = 3, numestados = 3)
+  tb02
+  ```
+
+- La solución sería:
+
+  ```{r}
+  sol02 = criterio.Todos(tb02, alfa = 0.5, T)
+  sol02
+  dibuja.criterio.Hurwicz(tb02, T)
+  ```
+
+A partir de los resultados obtenidos, podemos proceder a responder a las cinco cuestiones propuestas:
+
+Si el CEO es optimista, elegirá la alternativa derivada del criterio optimista, que es $d_1$. Por el contrario, si adopta un perfil pesimista, aplicará el criterio de Wald para seleccionar la alternativa $d_3$. Eso significa que la afirmación 1 es **verdadera** y la afirmación 2 es **falsa**.
+
+Además, el criterio de Laplace se decanta por la alternativa $d_3$ (electromovilidad y ciberseguridad) significando que la afirmación 3 es **falsa**.
+
+En relación con la cuarta pregunta, al observar el gráfico correspondiente apreciamos que, efectivamente, la alternativa $d_2$ (representada en verde) no resulta seleccionada para ningún valor de $\alpha$ así que esta afirmación es **verdadera**.
+
+Dado que la alternativa​ $d_3$ ha sido elegida un total de cinco veces, frente a una sola elección para las alternativas $d_1$ y $d_2$, se deduce que la decisión final óptima corresponde a la alternativa $d_3$ (electromovilidad y ciberseguridad). Por lo tanto, la afirmación de la pregunta 5 es **falsa**.
