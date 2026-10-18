@@ -8,7 +8,7 @@ format:
 
 # Problema 1: Matrices de valores numéricos
 
-Se tienen dos matrices de $4 \times 4$ con valores enteros aleatorios: una representa beneficios (favorable) y la otra costos (desfavorable).
+Se consideran dos matrices de decisión de $4 \times 4$ compuestas por valores enteros aleatorios: una representa una situación de beneficios (favorable) y la otra una situación de costes (desfavorable). Se pide analizar ambas matrices aplicando los seis criterios de decisión bajo incertidumbre estudiados para determinar la alternativa óptima en cada caso.
 
 ```{r}
 #| echo: false
@@ -27,6 +27,18 @@ rownames(Y) <- paste0("d", 1:4)
 knitr::kable(X)
 knitr::kable(Y)
 ```
+
+Además hay las siguientes cinco preguntas de Verdadero o Falso relacionadas con los resultados:
+
+1) En la matriz favorable el criterio de Wald elige dos alternativas equivalentes.
+
+2) En la matriz favorable el criterio de Hurwicz con $\alpha = 0,6$ elige la alternativa $d_1$.
+
+3) En la matriz favorable la decisión final es $d_2$.
+
+4) En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa $d_3$.
+
+5) En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa $d_3$ para todos los $\alpha\in(0,1)$.
 
 # Problema 2: Decisión de Inversión bajo Incertidumbre
 

@@ -146,8 +146,8 @@ window.Quarto = {
 </div>
 <section id="problema-1-matrices-de-valores-numéricos" class="level1">
 <h1>Problema 1: Matrices de valores numéricos</h1>
-<p>Se tienen dos matrices de <span class="math inline">\(4 \times 4\)</span> con valores enteros aleatorios: una representa beneficios (favorable) y la otra costos (desfavorable).</p>
-<div class="cell quarto-layout-panel" data-tbl-cap="[&quot;(favorable)&quot;,&quot;(defavorable)&quot;]" data-layout-ncol="2">
+<p>Se consideran dos matrices de decisión de <span class="math inline">\(4 \times 4\)</span> compuestas por valores enteros aleatorios: una representa una situación de beneficios (favorable) y la otra una situación de costes (desfavorable). Se pide analizar ambas matrices aplicando los seis criterios de decisión bajo incertidumbre estudiados para determinar la alternativa óptima en cada caso.</p>
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-tbl-cap="[&quot;(favorable)&quot;,&quot;(defavorable)&quot;]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="caption-top table table-sm table-striped small">
@@ -239,6 +239,14 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p>Además hay las siguientes cinco preguntas de Verdadero o Falso relacionadas con los resultados:</p>
+<ul>
+<li><p>1) En la matriz favorable el criterio de Wald elige dos alternativas equivalentes.</p></li>
+<li><p>2) En la matriz favorable el criterio de Hurwicz con <span class="math inline">\(\alpha = 0,6\)</span> elige la alternativa <span class="math inline">\(d_1\)</span>.</p></li>
+<li><p>3) En la matriz favorable la decisión final es <span class="math inline">\(d_2\)</span>.</p></li>
+<li><p>4) En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa <span class="math inline">\(d_3\)</span>.</p></li>
+<li><p>5) En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa <span class="math inline">\(d_3\)</span> para todos los <span class="math inline">\(\alpha\in(0,1)\)</span>.</p></li>
+</ul>
 <p><u><strong>Solución (favorable)</strong></u><strong>:</strong> Empezamos con el análisis de la primera matriz (favorable), aplicando de manera sistemática los seis criterios de decisión estudiados en clase para evaluar las diferentes alternativas y determinar la decisión óptima bajo cada uno de ellos:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tb01a <span class="ot">=</span> <span class="fu">crea.tablaX</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="sc">-</span><span class="dv">7</span>,<span class="sc">-</span><span class="dv">4</span>,<span class="dv">9</span>,</span>
@@ -282,7 +290,7 @@ d1 d2
  1  2 </code></pre>
 </div>
 </div>
-<p>Aplicando el criterio de Wald (pesimista), podemos observar que las alternativas <span class="math inline">\(d_1\)</span> y <span class="math inline">\(d_2\)</span> resultan ser equivalentes, ya que ambas ofrecen el mismo valor en el peor de los escenarios.</p>
+<p>Aplicando el criterio de Wald (pesimista), podemos observar que las alternativas <span class="math inline">\(d_1\)</span> y <span class="math inline">\(d_2\)</span> resultan ser equivalentes, ya que ambas ofrecen el mismo valor en el peor de los escenarios. Eso significa que la afirmación 1 es <strong>verdadera</strong>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.Optimista</span>(tb01a, T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -452,6 +460,7 @@ d1
 </div>
 </div>
 </div>
+<p>Vemos que el criterio de Hurwicz elige alternativa <span class="math inline">\(d_1\)</span> para <span class="math inline">\(\alpha = 0,6\)</span> así que la afirmación es <strong>verdadera</strong>.</p>
 <p>Ahora vamos a ver la evaluación final:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.Todos</span>(tb01a, <span class="fl">0.6</span>, T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -470,7 +479,7 @@ d4                    18.63
 iAlt.Opt (fav.)          d1</code></pre>
 </div>
 </div>
-<p>Vemos que la alternativa <span class="math inline">\(d_1\)</span> se propone cinco veces y la alternativa <span class="math inline">\(d_2\)</span>, dos veces. Ningún criterio apoya las alternativas <span class="math inline">\(d_3\)</span> y <span class="math inline">\(d_4\)</span>. Por lo tanto, la elección definitiva sería la alternativa <span class="math inline">\(d_1\)</span>.</p>
+<p>Vemos que la alternativa <span class="math inline">\(d_1\)</span> se propone cinco veces y la alternativa <span class="math inline">\(d_2\)</span>, dos veces. Ningún criterio apoya las alternativas <span class="math inline">\(d_3\)</span> y <span class="math inline">\(d_4\)</span>. Por lo tanto, la elección definitiva sería la alternativa <span class="math inline">\(d_1\)</span> y la afirmación 3 es <strong>falsa</strong>.</p>
 <p><u><strong>Solución (desfavorable)</strong></u><strong>:</strong> Continuamos con la solución de la segunda tabla, aplicando los seis mismos criterios:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tb01b <span class="ot">=</span> <span class="fu">crea.tablaX</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="sc">-</span><span class="dv">8</span>,<span class="dv">4</span>,</span>
@@ -486,6 +495,230 @@ d3 -6 -9  -1 -7
 d4  2 -3   0 -7</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.Wald</span>(tb01b,F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$criterio
+[1] "Wald"
+
+$metodo
+[1] "desfavorable"
+
+$tablaX
+   e1 e2  e3 e4
+d1 -2 -6  -8  4
+d2 -7  9 -10 -3
+d3 -6 -9  -1 -7
+d4  2 -3   0 -7
+
+$ValorAlternativas
+d1 d2 d3 d4 
+ 4  9 -1  2 
+
+$ValorOptimo
+[1] -1
+
+$AlternativaOptima
+d3 
+ 3 </code></pre>
+</div>
+</div>
+<p>Aplicando el criterio de Wald a la segunda tabla (desfavorable), la alternativa óptima es la opción <span class="math inline">\(d_3\)</span>, ya que es la que minimiza el coste máximo en el peor de los escenarios.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.Optimista</span>(tb01b, F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$criterio
+[1] "Optimista"
+
+$metodo
+[1] "desfavorable"
+
+$tablaX
+   e1 e2  e3 e4
+d1 -2 -6  -8  4
+d2 -7  9 -10 -3
+d3 -6 -9  -1 -7
+d4  2 -3   0 -7
+
+$ValorAlternativas
+ d1  d2  d3  d4 
+ -8 -10  -9  -7 
+
+$ValorOptimo
+[1] -10
+
+$AlternativaOptima
+d2 
+ 2 </code></pre>
+</div>
+</div>
+<p>Con el criterio optimista obtenemos como mejor decisión la alternativa <span class="math inline">\(d_2\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.Savage</span>(tb01b, F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$criterio
+[1] "Savage"
+
+$metodo
+[1] "desfavorable"
+
+$tablaX
+   e1 e2  e3 e4
+d1 -2 -6  -8  4
+d2 -7  9 -10 -3
+d3 -6 -9  -1 -7
+d4  2 -3   0 -7
+
+$Mejores
+ e1  e2  e3  e4 
+ -7  -9 -10  -7 
+
+$Pesos
+   e1 e2 e3 e4
+d1  5  3  2 11
+d2  0 18  0  4
+d3  1  0  9  0
+d4  9  6 10  0
+
+$ValorAlternativas
+d1 d2 d3 d4 
+11 18  9 10 
+
+$ValorOptimo
+[1] 9
+
+$AlternativaOptima
+d3 
+ 3 </code></pre>
+</div>
+</div>
+<p>Con el criterio de Savage obtenemos como mejor alternativa <span class="math inline">\(d_3\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.Laplace</span>(tb01b,F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$criterio
+[1] "Laplace"
+
+$metodo
+[1] "desfavorable"
+
+$tablaX
+   e1 e2  e3 e4
+d1 -2 -6  -8  4
+d2 -7  9 -10 -3
+d3 -6 -9  -1 -7
+d4  2 -3   0 -7
+
+$ValorAlternativas
+   d1    d2    d3    d4 
+-3.00 -2.75 -5.75 -2.00 
+
+$ValorOptimo
+[1] -5.75
+
+$AlternativaOptima
+d3 
+ 3 </code></pre>
+</div>
+</div>
+<p>Con el criterio de Laplace obtenemos la alternativa <span class="math inline">\(d_3\)</span> otra vez. Como el criterio de Savage también eligió la alternativa <span class="math inline">\(d_3\)</span>, la afirmación 4 es <strong>verdadera</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.PuntoIdeal</span>(tb01b,F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$criterio
+[1] "Punto Ideal"
+
+$metodo
+[1] "desfavorable"
+
+$tablaX
+   e1 e2  e3 e4
+d1 -2 -6  -8  4
+d2 -7  9 -10 -3
+d3 -6 -9  -1 -7
+d4  2 -3   0 -7
+
+$Mejores
+ e1  e2  e3  e4 
+ -7  -9 -10  -7 
+
+$ValorAlternativas
+[1] 12.609520 18.439089  9.055385 14.730920
+
+$ValorOptimo
+[1] 9.055385
+
+$AlternativaOptima
+[1] 3</code></pre>
+</div>
+</div>
+<p>El criterio del punto ideal también surgiere la alternativa <span class="math inline">\(d_3\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.Hurwicz</span>(tb01b, <span class="at">alfa=</span><span class="fl">0.4</span>, F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$criterio
+[1] "Hurwicz"
+
+$alfa
+[1] 0.4
+
+$metodo
+[1] "desfavorable"
+
+$tablaX
+   e1 e2  e3 e4
+d1 -2 -6  -8  4
+d2 -7  9 -10 -3
+d3 -6 -9  -1 -7
+d4  2 -3   0 -7
+
+$ValorAlternativas
+  d1   d2   d3   d4 
+-0.8  1.4 -4.2 -1.6 
+
+$ValorOptimo
+[1] -4.2
+
+$AlternativaOptima
+d3 
+ 3 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dibuja.criterio.Hurwicz</span>(tb01b, F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Soluciones_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Podemos ver que para un <span class="math inline">\(\alpha &gt; 0,9\)</span> el criterio elige la alternativa <span class="math inline">\(d_2\)</span> así que la afirmación 5 es <strong>falsa</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.Todos</span>(tb01b, <span class="fl">0.4</span>, F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     e1   e2   e3   e4 Wald Optimista Hurwicz Savage Laplace
+d1                   -2   -6   -8    4    4        -8    -0.8     11   -3.00
+d2                   -7    9  -10   -3    9       -10     1.4     18   -2.75
+d3                   -6   -9   -1   -7   -1        -9    -4.2      9   -5.75
+d4                    2   -3    0   -7    2        -7    -1.6     10   -2.00
+iAlt.Opt (Desfav.) &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   d3        d2      d3     d3      d3
+                   Punto Ideal
+d1                      12.610
+d2                      18.439
+d3                       9.055
+d4                      14.731
+iAlt.Opt (Desfav.)          d3</code></pre>
+</div>
+</div>
+<p>Vemos que todos los criterios, excepto el criterio optimista, se decantan por la alternativa <span class="math inline">\(d_3\)</span>, por lo que esta es nuestra decisión definitiva.</p>
+<p>A modo de resumen, tenemos lo siguiente:</p>
+<ul>
+<li><p>1) En la matriz favorable el criterio de Wald elige dos alternativas equivalentes. <strong>(V)</strong></p></li>
+<li><p>2) En la matriz favorable el criterio de Hurwicz con <span class="math inline">\(\alpha = 0,6\)</span> elige la alternativa <span class="math inline">\(d_1\)</span>. <strong>(V)</strong></p></li>
+<li><p>3) En la matriz favorable la decisión final es <span class="math inline">\(d_2\)</span>. <strong>(F)</strong></p></li>
+<li><p>4) En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa <span class="math inline">\(d_3\)</span>. <strong>(V)</strong></p></li>
+<li><p>5) En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa <span class="math inline">\(d_3\)</span> para todos los <span class="math inline">\(\alpha\in(0,1)\)</span>. <strong>(F)</strong></p></li>
+</ul>
 </section>
 
 </main>

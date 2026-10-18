@@ -12,7 +12,7 @@ source("teoriadecision_funciones_incertidumbre.R")
 
 # Problema 1: Matrices de valores numéricos
 
-Se tienen dos matrices de $4 \times 4$ con valores enteros aleatorios: una representa beneficios (favorable) y la otra costos (desfavorable).
+Se consideran dos matrices de decisión de $4 \times 4$ compuestas por valores enteros aleatorios: una representa una situación de beneficios (favorable) y la otra una situación de costes (desfavorable). Se pide analizar ambas matrices aplicando los seis criterios de decisión bajo incertidumbre estudiados para determinar la alternativa óptima en cada caso.
 
 ```{r}
 #| echo: false
@@ -32,6 +32,18 @@ knitr::kable(X)
 knitr::kable(Y)
 ```
 
+Además hay las siguientes cinco preguntas de Verdadero o Falso relacionadas con los resultados:
+
+- 1\) En la matriz favorable el criterio de Wald elige dos alternativas equivalentes.
+
+- 2\) En la matriz favorable el criterio de Hurwicz con $\alpha = 0,6$ elige la alternativa $d_1$.
+
+- 3\) En la matriz favorable la decisión final es $d_2$.
+
+- 4\) En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa $d_3$.
+
+- 5\) En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa $d_3$ para todos los $\alpha\in(0,1)$.
+
 [**Solución (favorable)**]{.underline}**:** Empezamos con el análisis de la primera matriz (favorable), aplicando de manera sistemática los seis criterios de decisión estudiados en clase para evaluar las diferentes alternativas y determinar la decisión óptima bajo cada uno de ellos:
 
 ```{r}
@@ -46,7 +58,7 @@ tb01a
 criterio.Wald(tb01a,T)
 ```
 
-Aplicando el criterio de Wald (pesimista), podemos observar que las alternativas $d_1$ y $d_2$ resultan ser equivalentes, ya que ambas ofrecen el mismo valor en el peor de los escenarios.
+Aplicando el criterio de Wald (pesimista), podemos observar que las alternativas $d_1$ y $d_2$ resultan ser equivalentes, ya que ambas ofrecen el mismo valor en el peor de los escenarios. Eso significa que la afirmación 1 es **verdadera**.
 
 ```{r}
 criterio.Optimista(tb01a, T)
@@ -79,13 +91,15 @@ criterio.Hurwicz(tb01a, alfa=0.6, T)
 dibuja.criterio.Hurwicz(tb01a, T)
 ```
 
+Vemos que el criterio de Hurwicz elige alternativa $d_1$ para $\alpha = 0,6$ así que la afirmación 2 es **verdadera**.
+
 Ahora vamos a ver la evaluación final:
 
 ```{r}
 criterio.Todos(tb01a, 0.6, T)
 ```
 
-Vemos que la alternativa $d_1$ se propone cinco veces y la alternativa $d_2$, dos veces. Ningún criterio apoya las alternativas $d_3$ y $d_4$. Por lo tanto, la elección definitiva sería la alternativa $d_1$.
+Vemos que la alternativa $d_1$ se propone cinco veces y la alternativa $d_2$, dos veces. Ningún criterio apoya las alternativas $d_3$ y $d_4$. Por lo tanto, la elección definitiva sería la alternativa $d_1$ y la afirmación 3 es **falsa**.
 
 [**Solución (desfavorable)**]{.underline}**:** Continuamos con la solución de la segunda tabla, aplicando los seis mismos criterios:
 
@@ -96,3 +110,58 @@ tb01b = crea.tablaX(c(-2,-6,-8,4,
                       2,-3,0,-7), numalternativas = 4, numestados = 4)
 tb01b
 ```
+
+```{r}
+criterio.Wald(tb01b,F)
+```
+
+Aplicando el criterio de Wald a la segunda tabla (desfavorable), la alternativa óptima es la opción $d_3$, ya que es la que minimiza el coste máximo en el peor de los escenarios.
+
+```{r}
+criterio.Optimista(tb01b, F)
+```
+
+Con el criterio optimista obtenemos como mejor decisión la alternativa $d_2$.
+
+```{r}
+criterio.Savage(tb01b, F)
+```
+
+Con el criterio de Savage obtenemos como mejor alternativa $d_3$.
+
+```{r}
+criterio.Laplace(tb01b,F)
+```
+
+Con el criterio de Laplace obtenemos la alternativa $d_3$ otra vez. Como el criterio de Savage también eligió la alternativa $d_3$, la afirmación 4 es **verdadera**.
+
+```{r}
+criterio.PuntoIdeal(tb01b,F)
+```
+
+El criterio del punto ideal también surgiere la alternativa $d_3$.
+
+```{r}
+criterio.Hurwicz(tb01b, alfa=0.4, F)
+dibuja.criterio.Hurwicz(tb01b, F)
+```
+
+Podemos ver que para un $\alpha > 0,9$ el criterio elige la alternativa $d_2$ así que la afirmación 5 es **falsa**.
+
+```{r}
+criterio.Todos(tb01b, 0.4, F)
+```
+
+Vemos que todos los criterios, excepto el criterio optimista, se decantan por la alternativa $d_3$, por lo que esta es nuestra decisión definitiva.
+
+A modo de resumen, tenemos lo siguiente:
+
+- 1\) En la matriz favorable el criterio de Wald elige dos alternativas equivalentes. **(V)**
+
+- 2\) En la matriz favorable el criterio de Hurwicz con $\alpha = 0,6$ elige la alternativa $d_1$. **(V)**
+
+- 3\) En la matriz favorable la decisión final es $d_2$. **(F)**
+
+- 4\) En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa $d_3$. **(V)**
+
+- 5\) En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa $d_3$ para todos los $\alpha\in(0,1)$. **(F)**
