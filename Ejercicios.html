@@ -108,8 +108,8 @@ window.Quarto = {
 
 <section id="problema-1-matrices-de-valores-numéricos" class="level1">
 <h1>Problema 1: Matrices de valores numéricos</h1>
-<p>Se tienen dos matrices de <span class="math inline">\(4 \times 4\)</span> con valores enteros aleatorios: una representa beneficios (favorable) y la otra costos (desfavorable).</p>
-<div class="cell quarto-layout-panel" data-layout-ncol="2" data-tbl-cap="[&quot;(favorable)&quot;,&quot;(defavorable)&quot;]">
+<p>Se consideran dos matrices de decisión de <span class="math inline">\(4 \times 4\)</span> compuestas por valores enteros aleatorios: una representa una situación de beneficios (favorable) y la otra una situación de costes (desfavorable). Se pide analizar ambas matrices aplicando los seis criterios de decisión bajo incertidumbre estudiados para determinar la alternativa óptima en cada caso.</p>
+<div class="cell quarto-layout-panel" data-tbl-cap="[&quot;(favorable)&quot;,&quot;(defavorable)&quot;]" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="caption-top table table-sm table-striped small">
@@ -201,10 +201,18 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p>Las cinco preguntas de Verdadero o Falso son los siguientes:</p>
+<ol type="1">
+<li><p>En la matriz favorable el criterio de Wald elige dos alternativas equivalentes.</p></li>
+<li><p>En la matriz favorable el criterio de Hurwicz con <span class="math inline">\(\alpha = 0,6\)</span> elige la alternativa <span class="math inline">\(d_1\)</span>.</p></li>
+<li><p>En la matriz favorable la decisión final es <span class="math inline">\(d_2\)</span>.</p></li>
+<li><p>En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa <span class="math inline">\(d_3\)</span>.</p></li>
+<li><p>En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa <span class="math inline">\(d_3\)</span> para todos los <span class="math inline">\(\alpha\in(0,1)\)</span>.</p></li>
+</ol>
 </section>
 <section id="problema-2-decisión-de-inversión-bajo-incertidumbre" class="level1">
 <h1>Problema 2: Decisión de Inversión bajo Incertidumbre</h1>
-<p>Un fondo de inversión dispone de <span class="math inline">\(10\,\text{M€}\)</span>. Por política de gestión del riesgo, la directiva no puede invertir en los tres sectores a la vez ni concentrar todo en uno solo: debe repartir el capital al <span class="math inline">\(50\%\)</span> entre exactamente dos sectores.</p>
+<p>Un fondo de inversión dispone de <span class="math inline">\(10\,\text{M€}\)</span>. Por política de gestión del riesgo, la directiva no puede invertir en los tres sectores disponibles a la vez ni concentrar todo en uno solo: debe repartir el capital al <span class="math inline">\(50\%\)</span> entre exactamente dos sectores.</p>
 <p>Las tres alternativas posibles son:</p>
 <ul>
 <li><span class="math inline">\(d_1\)</span>: <span class="math inline">\(50\%\)</span> Energía Solar y <span class="math inline">\(50\%\)</span> Electromovilidad</li>
@@ -217,6 +225,14 @@ window.Quarto = {
 <li><span class="math inline">\(e_2\)</span>: Energía Solar baja un <span class="math inline">\(8\%\)</span>, Electromovilidad sube un <span class="math inline">\(12\%\)</span>, Ciberseguridad sube un <span class="math inline">\(6\%\)</span></li>
 <li><span class="math inline">\(e_3\)</span>: Energía Solar baja un <span class="math inline">\(10\%\)</span>, Electromovilidad baja un <span class="math inline">\(4\%\)</span>, Ciberseguridad sube un <span class="math inline">\(18\%\)</span></li>
 </ul>
+<p>Las cinco preguntas de Verdadero o Falso son los siguientes:</p>
+<ol type="1">
+<li><p>Si el CEO del fondo se muestra optimista y prevé que las cotizaciones suban, invierte en energía solar y electromovilidad.</p></li>
+<li><p>Si el CEO del fondo se muestra pesimista y prevé que las cotizaciones bajen, invierte en energía solar y ciberseguridad.</p></li>
+<li><p>Según el criterio de Laplace, la decisión es invertir en energía solar y ciberseguridad.</p></li>
+<li><p>El criterio de Hurwicz nunca elige la alternativa <span class="math inline">\(d_2\)</span> para ningún valor de <span class="math inline">\(\alpha\in(0,1)\)</span>.</p></li>
+<li><p>La decisión final es invertir en energía solar y ciberseguridad.</p></li>
+</ol>
 </section>
 
 </main>

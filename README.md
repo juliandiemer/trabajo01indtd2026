@@ -4,8 +4,8 @@ Este repositorio contiene la resolución de dos problemas de toma de decisiones 
 
 ## Contenido del Repositorio
 
-- `Ejercicios.qmd`: Documento fuente con los enunciados de los problemas y los cuestionarios.
-- `Soluciones.qmd`: Documento fuente con la resolución completa, código en R y análisis de resultados.
+- `Ejercicios.qmd`: Documento fuente con los enunciados de los problemas y los cuestionarios. Disponible en dos formatos: HTML y PDF.
+- `Soluciones.qmd`: Documento fuente con la resolución completa, código en R y análisis de resultados. Disponible en dos formatos: HTML y PDF.
 - `teoriadecision_funciones_incertidumbre.R`: Funciones en R para el cálculo de los criterios de decisión.
 - `README.md`: Breve descripción del contenido del repositorio.
 

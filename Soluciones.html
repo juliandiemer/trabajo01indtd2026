@@ -144,7 +144,7 @@ window.Quarto = {
 <section id="problema-1-matrices-de-valores-numéricos" class="level1">
 <h1>Problema 1: Matrices de valores numéricos</h1>
 <p>Se consideran dos matrices de decisión de <span class="math inline">\(4 \times 4\)</span> compuestas por valores enteros aleatorios: una representa una situación de beneficios (favorable) y la otra una situación de costes (desfavorable). Se pide analizar ambas matrices aplicando los seis criterios de decisión bajo incertidumbre estudiados para determinar la alternativa óptima en cada caso.</p>
-<div class="cell quarto-layout-panel" data-layout-ncol="2" data-tbl-cap="[&quot;(favorable)&quot;,&quot;(defavorable)&quot;]">
+<div class="cell quarto-layout-panel" data-tbl-cap="[&quot;(favorable)&quot;,&quot;(defavorable)&quot;]" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="caption-top table table-sm table-striped small">
@@ -236,14 +236,14 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Además hay las siguientes cinco preguntas de Verdadero o Falso relacionadas con los resultados:</p>
-<ul>
-<li><p>1) En la matriz favorable el criterio de Wald elige dos alternativas equivalentes.</p></li>
-<li><p>2) En la matriz favorable el criterio de Hurwicz con <span class="math inline">\(\alpha = 0,6\)</span> elige la alternativa <span class="math inline">\(d_1\)</span>.</p></li>
-<li><p>3) En la matriz favorable la decisión final es <span class="math inline">\(d_2\)</span>.</p></li>
-<li><p>4) En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa <span class="math inline">\(d_3\)</span>.</p></li>
-<li><p>5) En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa <span class="math inline">\(d_3\)</span> para todos los <span class="math inline">\(\alpha\in(0,1)\)</span>.</p></li>
-</ul>
+<p>Las cinco preguntas de Verdadero o Falso son los siguientes:</p>
+<ol type="1">
+<li><p>En la matriz favorable el criterio de Wald elige dos alternativas equivalentes.</p></li>
+<li><p>En la matriz favorable el criterio de Hurwicz con <span class="math inline">\(\alpha = 0,6\)</span> elige la alternativa <span class="math inline">\(d_1\)</span>.</p></li>
+<li><p>En la matriz favorable la decisión final es <span class="math inline">\(d_2\)</span>.</p></li>
+<li><p>En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa <span class="math inline">\(d_3\)</span>.</p></li>
+<li><p>En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa <span class="math inline">\(d_3\)</span> para todos los <span class="math inline">\(\alpha\in(0,1)\)</span>.</p></li>
+</ol>
 <p><u><strong>Solución (favorable)</strong></u><strong>:</strong> Empezamos con el análisis de la primera matriz (favorable), aplicando de manera sistemática los seis criterios de decisión estudiados en clase para evaluar las diferentes alternativas y determinar la decisión óptima bajo cada uno de ellos:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tb01a <span class="ot">=</span> <span class="fu">crea.tablaX</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="sc">-</span><span class="dv">7</span>,<span class="sc">-</span><span class="dv">4</span>,<span class="dv">9</span>,</span>
@@ -688,10 +688,30 @@ d3
 </figure>
 </div>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dibuja.criterio.Hurwicz_Intervalos</span>(tb01b, F, T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Soluciones_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p>Podemos ver que para un <span class="math inline">\(\alpha &gt; 0,9\)</span> el criterio elige la alternativa <span class="math inline">\(d_2\)</span> así que la afirmación 5 es <strong>falsa</strong>.</p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$AltOptimas
+[1] 3 2
+
+$PuntosDeCorte
+[1] 0.909
+
+$IntervalosAlfa
+     Intervalo       Alternativa
+[1,] "( 0 , 0.909 )" "3"        
+[2,] "( 0.909 , 1 )" "2"        </code></pre>
+</div>
+</div>
+<p>Podemos ver que para un <span class="math inline">\(\alpha &gt; 0,909\)</span> el criterio elige la alternativa <span class="math inline">\(d_2\)</span> así que la afirmación 5 es <strong>falsa</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.Todos</span>(tb01b, <span class="fl">0.4</span>, F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">criterio.Todos</span>(tb01b, <span class="fl">0.4</span>, F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     e1   e2   e3   e4 Wald Optimista Hurwicz Savage Laplace
 d1                   -2   -6   -8    4    4        -8    -0.8     11   -3.00
@@ -718,8 +738,8 @@ iAlt.Opt (Desfav.)          d3</code></pre>
 </ul>
 </section>
 <section id="problema-2-decisión-de-inversión-bajo-incertidumbre" class="level1">
-<h1>Problema 2: Decisión de inversión bajo incertidumbre</h1>
-<p>Un fondo de inversión dispone de <span class="math inline">\(10\,\text{M€}\)</span>. Por política de gestión del riesgo, la directiva no puede invertir en los tres sectores a la vez ni concentrar todo en uno solo: debe repartir el capital al <span class="math inline">\(50\%\)</span> entre exactamente dos sectores.</p>
+<h1>Problema 2: Decisión de Inversión bajo Incertidumbre</h1>
+<p>Un fondo de inversión dispone de <span class="math inline">\(10\,\text{M€}\)</span>. Por política de gestión del riesgo, la directiva no puede invertir en los tres sectores disponibles a la vez ni concentrar todo en uno solo: debe repartir el capital al <span class="math inline">\(50\%\)</span> entre exactamente dos sectores.</p>
 <p>Las tres alternativas posibles son:</p>
 <ul>
 <li><span class="math inline">\(d_1\)</span>: <span class="math inline">\(50\%\)</span> Energía Solar y <span class="math inline">\(50\%\)</span> Electromovilidad</li>
@@ -734,13 +754,13 @@ iAlt.Opt (Desfav.)          d3</code></pre>
 </ul>
 <p>Las cinco preguntas de Verdadero o Falso son los siguientes:</p>
 <ol type="1">
-<li><p>Si el CEO se muestra optimista y prevé que las cotizaciones suban, invierte en energía solar y electromovilidad.</p></li>
-<li><p>Si el CEO se muestra pesimista y prevé que las cotizaciones bajen, invierte en energía solar y ciberseguridad.</p></li>
-<li><p>Según el criterio de Laplace, la decisión final es invertir en energía solar y ciberseguridad.</p></li>
+<li><p>Si el CEO del fondo se muestra optimista y prevé que las cotizaciones suban, invierte en energía solar y electromovilidad.</p></li>
+<li><p>Si el CEO del fondo se muestra pesimista y prevé que las cotizaciones bajen, invierte en energía solar y ciberseguridad.</p></li>
+<li><p>Según el criterio de Laplace, la decisión es invertir en energía solar y ciberseguridad.</p></li>
 <li><p>El criterio de Hurwicz nunca elige la alternativa <span class="math inline">\(d_2\)</span> para ningún valor de <span class="math inline">\(\alpha\in(0,1)\)</span>.</p></li>
 <li><p>La decisión final es invertir en energía solar y ciberseguridad.</p></li>
 </ol>
-<p><strong>Solución problema 2</strong>: El planteamiento es el siguiente:</p>
+<p><u><strong>Solución problema 2</strong></u>: El planteamiento es el siguiente:</p>
 <ul>
 <li><p>Decisor: El fondo</p></li>
 <li><p>Modelo de beneficios (favorable)</p></li>
@@ -760,45 +780,45 @@ iAlt.Opt (Desfav.)          d3</code></pre>
 <ul>
 <li><p>Estado <span class="math inline">\(e_1\)</span>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m11 =</span> (<span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.15</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.10</span> <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.05</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m11 =</span> (<span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.15</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.10</span> <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.05</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.125</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m21 =</span> (<span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.15</span> <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span><span class="fl">0.10</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.05</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m21 =</span> (<span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.15</span> <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span><span class="fl">0.10</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.05</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.05</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m31 =</span> (<span class="dv">0</span><span class="sc">*</span><span class="fl">0.15</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.10</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.05</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m31 =</span> (<span class="dv">0</span><span class="sc">*</span><span class="fl">0.15</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.10</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.05</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.025</code></pre>
 </div>
 </div></li>
 <li><p>Estado <span class="math inline">\(e_2\)</span>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m12 =</span> (<span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.08</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.12</span> <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span><span class="fl">0.06</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m12 =</span> (<span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.08</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.12</span> <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span><span class="fl">0.06</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m22 =</span> (<span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.08</span>) <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span><span class="fl">0.12</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.06</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m22 =</span> (<span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.08</span>) <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span><span class="fl">0.12</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.06</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.01</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m32 =</span> (<span class="dv">0</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.08</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.12</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.06</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m32 =</span> (<span class="dv">0</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.08</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.12</span> <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.06</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.09</code></pre>
 </div>
 </div></li>
 <li><p>Estado <span class="math inline">\(e_3\)</span>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m13 =</span> (<span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.04</span>) <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span><span class="fl">0.18</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m13 =</span> (<span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.04</span>) <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span><span class="fl">0.18</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.07</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m23 =</span> (<span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span> (<span class="sc">-</span><span class="fl">0.04</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.18</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m23 =</span> (<span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span> <span class="dv">0</span><span class="sc">*</span> (<span class="sc">-</span><span class="fl">0.04</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.18</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.04</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m33 =</span> (<span class="dv">0</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.04</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.18</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">m33 =</span> (<span class="dv">0</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.04</span>) <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.18</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.07</code></pre>
 </div>
@@ -806,10 +826,10 @@ iAlt.Opt (Desfav.)          d3</code></pre>
 </ul></li>
 <li><p>Introducción de datos:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>tb02 <span class="ot">=</span> <span class="fu">crea.tablaX</span>(<span class="fu">c</span>(m11,m12,m13,</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>                    m21,m22,m23,</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>                    m31,m32,m33), <span class="at">numalternativas =</span> <span class="dv">3</span>, <span class="at">numestados =</span> <span class="dv">3</span>)</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>tb02</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>tb02 <span class="ot">=</span> <span class="fu">crea.tablaX</span>(<span class="fu">c</span>(m11,m12,m13,</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>                    m21,m22,m23,</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                    m31,m32,m33), <span class="at">numalternativas =</span> <span class="dv">3</span>, <span class="at">numestados =</span> <span class="dv">3</span>)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>tb02</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      e1    e2    e3
 d1 0.125  0.02 -0.07
@@ -819,8 +839,8 @@ d3 0.025  0.09  0.07</code></pre>
 </div></li>
 <li><p>La solución sería:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>sol02 <span class="ot">=</span> <span class="fu">criterio.Todos</span>(tb02, <span class="at">alfa =</span> <span class="fl">0.5</span>, T)</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>sol02</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>sol02 <span class="ot">=</span> <span class="fu">criterio.Todos</span>(tb02, <span class="at">alfa =</span> <span class="fl">0.5</span>, T)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>sol02</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   e1    e2    e3   Wald Optimista Hurwicz Savage Laplace
 d1              0.125  0.02 -0.07 -0.070     0.125  0.0275   0.14 0.02500
@@ -833,7 +853,7 @@ d2                   0.1285
 d3                   0.1000
 iAlt.Opt (fav.)          d3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dibuja.criterio.Hurwicz</span>(tb02, T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dibuja.criterio.Hurwicz</span>(tb02, T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

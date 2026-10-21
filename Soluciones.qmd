@@ -33,17 +33,17 @@ knitr::kable(X)
 knitr::kable(Y)
 ```
 
-Además hay las siguientes cinco preguntas de Verdadero o Falso relacionadas con los resultados:
+Las cinco preguntas de Verdadero o Falso son los siguientes:
 
-- 1\) En la matriz favorable el criterio de Wald elige dos alternativas equivalentes.
+1)  En la matriz favorable el criterio de Wald elige dos alternativas equivalentes.
 
-- 2\) En la matriz favorable el criterio de Hurwicz con $\alpha = 0,6$ elige la alternativa $d_1$.
+2)  En la matriz favorable el criterio de Hurwicz con $\alpha = 0,6$ elige la alternativa $d_1$.
 
-- 3\) En la matriz favorable la decisión final es $d_2$.
+3)  En la matriz favorable la decisión final es $d_2$.
 
-- 4\) En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa $d_3$.
+4)  En la matriz desfavorable el criterio Laplace y el criterio Savage eligen la alternativa $d_3$.
 
-- 5\) En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa $d_3$ para todos los $\alpha\in(0,1)$.
+5)  En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa $d_3$ para todos los $\alpha\in(0,1)$.
 
 [**Solución (favorable)**]{.underline}**:** Empezamos con el análisis de la primera matriz (favorable), aplicando de manera sistemática los seis criterios de decisión estudiados en clase para evaluar las diferentes alternativas y determinar la decisión óptima bajo cada uno de ellos:
 
@@ -145,9 +145,10 @@ El criterio del punto ideal también surgiere la alternativa $d_3$.
 ```{r}
 criterio.Hurwicz(tb01b, alfa=0.4, F)
 dibuja.criterio.Hurwicz(tb01b, F)
+dibuja.criterio.Hurwicz_Intervalos(tb01b, F, T)
 ```
 
-Podemos ver que para un $\alpha > 0,9$ el criterio elige la alternativa $d_2$ así que la afirmación 5 es **falsa**.
+Podemos ver que para un $\alpha > 0,909$ el criterio elige la alternativa $d_2$ así que la afirmación 5 es **falsa**.
 
 ```{r}
 criterio.Todos(tb01b, 0.4, F)
@@ -167,9 +168,9 @@ A modo de resumen, tenemos lo siguiente:
 
 - 5\) En la matriz desfavorable el criterio de Hurwicz siempre elige alternativa $d_3$ para todos los $\alpha\in(0,1)$. **(F)**
 
-# Problema 2: Decisión de inversión bajo incertidumbre
+# Problema 2: Decisión de Inversión bajo Incertidumbre
 
-Un fondo de inversión dispone de $10\,\text{M€}$. Por política de gestión del riesgo, la directiva no puede invertir en los tres sectores a la vez ni concentrar todo en uno solo: debe repartir el capital al $50\%$ entre exactamente dos sectores.
+Un fondo de inversión dispone de $10\,\text{M€}$. Por política de gestión del riesgo, la directiva no puede invertir en los tres sectores disponibles a la vez ni concentrar todo en uno solo: debe repartir el capital al $50\%$ entre exactamente dos sectores.
 
 Las tres alternativas posibles son:
 
@@ -185,17 +186,17 @@ El rendimiento económico final depende del estado de la naturaleza que se prese
 
 Las cinco preguntas de Verdadero o Falso son los siguientes:
 
-1.  Si el CEO se muestra optimista y prevé que las cotizaciones suban, invierte en energía solar y electromovilidad.
+1.  Si el CEO del fondo se muestra optimista y prevé que las cotizaciones suban, invierte en energía solar y electromovilidad.
 
-2.  Si el CEO se muestra pesimista y prevé que las cotizaciones bajen, invierte en energía solar y ciberseguridad.
+2.  Si el CEO del fondo se muestra pesimista y prevé que las cotizaciones bajen, invierte en energía solar y ciberseguridad.
 
-3.  Según el criterio de Laplace, la decisión final es invertir en energía solar y ciberseguridad.
+3.  Según el criterio de Laplace, la decisión es invertir en energía solar y ciberseguridad.
 
 4.  El criterio de Hurwicz nunca elige la alternativa $d_2$ para ningún valor de $\alpha\in(0,1)$.
 
 5.  La decisión final es invertir en energía solar y ciberseguridad.
 
-**Solución problema 2**: El planteamiento es el siguiente:
+[**Solución problema 2**]{.underline}: El planteamiento es el siguiente:
 
 - Decisor: El fondo
 
